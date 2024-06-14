@@ -1,10 +1,10 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 import { HiBell } from "react-icons/hi";
-import { useTask } from "../context/appContext";
+import { useModal, useTask } from "../context/appContext";
 const NavBar = () => {
   const { searchQuery, setSearchQuery, getFilteredTasks } = useTask();
-  //   const {openModal}=useModal()
+  const { openAddTask } = useModal();
   const currentDate = new Date();
   const options = { year: "numeric", month: "short", day: "2-digit" };
   const formattedDate = currentDate.toLocaleDateString("en-US", options);
@@ -38,7 +38,7 @@ const NavBar = () => {
         <HiBell className="text-2xl text-violet-600 dark:text-violet-800" />
         <button
           className=" w-36 text-white py-3 rounded-lg bg-violet-600 hover:bg-violet-700 dark:bg-violet-800"
-          // onClick={openModal}
+          onClick={openAddTask}
         >
           Add new task
         </button>
