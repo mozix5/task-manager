@@ -25,10 +25,10 @@ const UncompletedTasks = () => {
           {tasks.map((task, index) => {
             return task.completed == false ? (
               <Task
-                key={task.id}
-                id={task.id}
+                key={task._id}
+                id={task._id}
                 title={task.title}
-                desc={task.desc}
+                desc={task.description}
                 date={task.date}
                 completed={task.completed}
               />

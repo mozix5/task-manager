@@ -12,13 +12,13 @@ const AllTasks = () => {
   const viewClass = view ? "grid-cols-1" : "grid-cols-3";
   // console.log(view);
   return (
-    <div className="mx-8">
-      <div className=" text-2xl font-semibold text-slate-600 mt-2 ">
+    <div className="mx-8 pb-6">
+      <div className=" text-2xl font-semibold text-slate-600 mt-2">
         All tasks
       </div>
       <ViewToggle view={view} gridView={gridView}/>
       <div
-        className={`mt-4 grid gap-2 sm:gap-4 xl:gap-6 items-end ${viewClass}`}
+        className={`mt-4 grid md:grid-cols-3 grid-cols-2 gap-6 grid-flow-row items-end ${viewClass}`}
       >
         {tasks?.map((task, index) => {
           return (

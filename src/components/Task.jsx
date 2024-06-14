@@ -28,7 +28,7 @@ const Task = (props) => {
   return (
     <div
       className={`bg-violet-600  rounded-lg p-3 sm:p-4 text-white flex hover:shadow-lg hover:shadow-slate-300 dark:hover:shadow-slate-700 ${
-        view ? "flex-row h-32" : "flex-col h-52 sm:h-64"
+        view ? "flex-row min-h-32" : "flex-col sm:h-64"
       }`}
     >
       <div className="flex-1 flex flex-col justify-between">
@@ -46,8 +46,8 @@ const Task = (props) => {
           view ? "" : "border-dashed border-t-2"
         }`}
       >
-        <div className="mt-4 flex">
-          <div className="flex-1 mr-4">
+        <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:gap-0">
+          <div className="flex-1 xl:mr-4">
             <button
               onClick={() => toggleComplete(props.id)}
               className={`${

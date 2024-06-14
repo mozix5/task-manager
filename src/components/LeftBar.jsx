@@ -5,7 +5,7 @@ import { useModal } from "../context/appContext";
 const LeftBar = () => {
     const{openAddTask}=useModal()
   return (
-    <div className=" sticky top-0 h-screen  w-64 bg-slate-100 dark:bg-slate-800 dark:text-slate-400">
+    <div className="hidden xl:block sticky top-0 h-screen  w-64 bg-slate-100 dark:bg-slate-800 dark:text-slate-400">
       <div className=" pt-8 text-center font-bold text-lg">TO-DO LIST</div>
       <div className="mx-4">
         <button

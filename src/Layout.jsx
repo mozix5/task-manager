@@ -13,7 +13,7 @@ const Layout = () => {
       <div>
         <LeftBar />
       </div>
-      <div className=" bg-slate-200 min-screen flex-1 dark:bg-slate-900">
+      <div className=" bg-slate-200 min-h-screen flex-1 dark:bg-slate-900">
         <Navbar />
         {searchQuery.trim() === "" ? <Outlet /> : <SearchedTask />}
       </div>

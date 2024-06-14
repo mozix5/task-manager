@@ -13,7 +13,7 @@ const RightBar = () => {
   const {darkMode,toggleDarkMode}=useDarkMode()
   const progress = calculateProgress;
   return (
-    <div className=" sticky top-0 dark:bg-slate-800 dark:text-slate-400 h-screen w-[16rem] bg-slate-100 flex flex-col p-5">
+    <div className="hidden sticky top-0 dark:bg-slate-800 dark:text-slate-400 h-screen w-[16rem] bg-slate-100 xl:flex flex-col p-5">
       <div className="flex-1 ">
         <div className="flex justify-center items-center gap-4">
           <div>HI, User!</div>

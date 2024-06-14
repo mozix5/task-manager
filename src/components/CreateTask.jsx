@@ -81,7 +81,7 @@ const CreateTask = () => {
   return (
     <>
       <Modal closeModal={closeModal}>
-        <div className="w-[34%] relative rounded-lg bg-slate-200 py-6 px-5">
+        <div className="xl:w-[34%] w-[80vw] md:w-[60vw] relative rounded-lg bg-slate-200 py-6 px-5">
           <div className="text-xl text-slate-600">{id ? "Edit Task" : "Add New Task"}</div>
           <form className="flex flex-col" onSubmit={submitTask}>
             <div className="my-4">
