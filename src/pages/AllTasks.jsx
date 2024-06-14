@@ -7,11 +7,10 @@ import ViewToggle from "../components/ViewToggle";
 
 const AllTasks = () => {
   const { tasks } = useTask();
+  console.log(tasks);
   const { view, gridView } = useView();
   const viewClass = view ? "grid-cols-1" : "grid-cols-3";
   // console.log(view);
-
-  // const reversedNote = [...note].reverse();
   return (
     <div className="mx-8">
       <div className=" text-2xl font-semibold text-slate-600 mt-2 ">
@@ -21,14 +20,14 @@ const AllTasks = () => {
       <div
         className={`mt-4 grid gap-2 sm:gap-4 xl:gap-6 items-end ${viewClass}`}
       >
-        {tasks.map((task, index) => {
+        {tasks?.map((task, index) => {
           return (
             <Task
-              key={task.id}
-              id={task.id}
+              key={task._id}
+              id={task._id}
               title={task.title}
-              desc={task.desc}
-              date={task.date}
+              desc={task.description}
+              date={task.createdAt}
               completed={task.completed}
               important={task.important}
             />

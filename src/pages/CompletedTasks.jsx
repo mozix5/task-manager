@@ -26,11 +26,11 @@ const CompletedTasks = () => {
           return (
             task.completed && (
               <Task
-                key={task.id}
-                id={task.id}
+                key={task._id}
+                id={task._id}
                 title={task.title}
-                desc={task.desc}
-                date={task.date}
+                desc={task.description}
+                date={task.createdAt}
                 completed={task.completed}
               />
             )

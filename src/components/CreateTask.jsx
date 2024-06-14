@@ -1,32 +1,76 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
-import { useModal, useTask } from "../context/appContext";
+import { useModal, useTask, useUserData } from "../context/appContext";
+import axios from "axios";
 
 const CreateTask = () => {
-    const { closeModal } = useModal();
-    const {  addTask } = useTask();
-    const [newTasks, setNewTasks] = useState({
-        title: "",
-        desc: "",
-        // date: formattedDate,
-        important: false,
-        completed: false,
-      });
-    
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setNewTasks((prevTask) => {
-          return { ...prevTask, [name]: value };
-        });
-        // console.log(todo);
-      };
-      const submitTask = (e) => {
-        e.preventDefault();
-        addTask(newTasks);
-    
-        closeModal();
-        // console.log(note);
-      };
+  const { closeModal } = useModal();
+  const { addTask } = useTask();
+  const [newTasks, setNewTasks] = useState({
+    title: "",
+    desc: "",
+    // date: formattedDate,
+    important: false,
+    completed: false,
+  });
+  const { token,user } = useUserData();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewTasks((prevTask) => {
+      return { ...prevTask, [name]: value };
+    });
+  };
+  // const submitTask = (e) => {
+  //   e.preventDefault();
+  //   addTask(newTasks);
+  //   axios
+  //     .post("https://task-manager-api-rm04.onrender.com/task", {
+  //       title: title,
+  //       description: desc,
+  //       important:false,
+  //       completed:false
+  //     },)
+  //     .then((res) => {
+
+  //       setIsLoading(false);
+  //       navigate("/");
+  //     })
+  //     .catch((err) => {
+  //       setIsLoading(false);
+  //       console.log(err);
+  //     });
+  //   closeModal();
+  //   // console.log(note);
+  // };
+  const submitTask = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://task-manager-api-rm04.onrender.com/task",
+        {
+          title: newTasks.title,
+          description: newTasks.desc,
+          important: false,
+          completed: false,
+          userId:user._id
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      addTask(response.data);
+      // navigate("/");
+      closeModal();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      closeModal();
+    }
+  };
+
   return (
     <>
       <Modal closeModal={closeModal}>

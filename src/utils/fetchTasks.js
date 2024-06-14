@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
-const useFetchTasks = (url) => {
+const useFetchTasks = (url, params, token) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -8,12 +9,13 @@ const useFetchTasks = (url) => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setTasks(data);
+        const response = await axios.get(url, {
+          params,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setTasks(response.data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -22,7 +24,7 @@ const useFetchTasks = (url) => {
     };
 
     fetchTasks();
-  }, [url]);
+  }, [ token]);
 
   return { tasks, setTasks, loading, error };
 };
