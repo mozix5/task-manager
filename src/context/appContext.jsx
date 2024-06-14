@@ -45,6 +45,7 @@ export const AppContext = ({ children }) => {
     toggleDarkMode,
     loading,
     error,
+    updateTask
   } = useTaskState(token,user._id);
 
   return (
@@ -63,6 +64,7 @@ export const AppContext = ({ children }) => {
             setSearchQuery,
             loading,
             error,
+            updateTask
           }}
         >
           <ViewContext.Provider value={{ view, gridView }}>

@@ -25,6 +25,7 @@ const App = () => {
               <Route path="uncompleted" element={<UncompletedTasks />} />
               <Route path="important" element={<ImportantTasks />} />
               <Route path="create" element={<CreateTask />} />
+              <Route path="edit/:id" element={<CreateTask />} />
             </Route>
           </Route>
         </Routes>

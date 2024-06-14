@@ -157,6 +157,13 @@ const useTaskState = (token,id) => {
       )
     );
   };
+  const updateTask = (updatedTask) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task._id === updatedTask._id ? { ...task, ...updatedTask } : task
+      )
+    );
+  };
 
   const importantTasks = (id) => {
     setTasks((prevTask) =>
@@ -191,7 +198,6 @@ const useTaskState = (token,id) => {
   };
 
   return {
-    isOpen,
     openAddTask,
     closeModal,
     tasks,
@@ -212,6 +218,7 @@ const useTaskState = (token,id) => {
     getTotalTasks,
     loading,
     error,
+    updateTask
   };
 };
 

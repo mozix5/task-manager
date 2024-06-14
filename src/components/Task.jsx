@@ -4,13 +4,14 @@ import { RxCalendar } from "react-icons/rx";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useModal, useTask, useView } from "../context/appContext";
+import { useNavigate } from "react-router-dom";
 
 const Task = (props) => {
   const { deleteTask, importantTasks, toggleComplete } = useTask();
   const bgCol = props.important ? "text-black" : "text-white";
   const { view } = useView();
   const { openModal } = useModal();
-
+  const navigate = useNavigate();
   // Format the date if it exists
   const formattedDate = props.date
     ? new Date(props.date).toLocaleDateString("en-US", {
@@ -20,6 +21,10 @@ const Task = (props) => {
       })
     : "";
 
+  const handleEdit = () => {
+    navigate(`/edit/${props.id}`);
+    openModal
+  };
   return (
     <div
       className={`bg-violet-600  rounded-lg p-3 sm:p-4 text-white flex hover:shadow-lg hover:shadow-slate-300 dark:hover:shadow-slate-700 ${
@@ -75,7 +80,7 @@ const Task = (props) => {
                 className="hover:text-slate-700"
               />
             </button>
-            <button>
+            <button onClick={handleEdit}>
               <BsThreeDotsVertical className="hover:text-slate-700" />
             </button>
           </div>
